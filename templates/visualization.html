@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #0f052b; /* Dark background for a cyber theme */
+            color: #f72585; /* Cyber pink text */
+        }
+
+        h1 {
+            text-align: center;
+            color: #f72585; /* Vibrant pink */
+            text-shadow: 0 0 10px #f72585, 0 0 20px #ff0090; /* Electrify effect */
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 1200px; /* Center the grid */
+        }
+
+        .image-container {
+            background-color: #1b073b; /* Dark purple container */
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 15px #ff0090; /* Glow effect */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05); /* Zoom effect */
+            box-shadow: 0 0 25px #f72585, 0 0 40px #ff0090;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-height: 250px; /* Medium size images */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #f72585;
+            cursor: pointer; /* Make the image clickable */
+        }
+
+        .image-container p {
+            margin-top: 10px;
+            color: #ff9de5;
+            font-size: 16px;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #ff0090;
+            cursor: pointer;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #ff0090, #f72585, #ff0090);
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 0 15px #f72585, 0 0 30px #ff0090;
+        }
+
+        .button-container a:hover {
+            background: linear-gradient(90deg, #f72585, #ff0090, #f72585);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #f72585, 0 0 40px #ff0090;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visualization Results</h1>
+
+    <div class="image-grid">
+        <div class="image-container">
+            <img src="/static/visualization1.png" alt="Visualization 1" onclick="openLightbox(this)">
+            <p>Latitude vs Longitude with Median House Value</p>
+        </div>
+
+        <div class="image-container">
+            <img src="/static/visualization2.png" alt="Visualization 2" onclick="openLightbox(this)">
+            <p>Bedroom Ratio vs Median House Value</p>
+        </div>
+
+        <div class="image-container">
+            <img src="/static/visualization3.png" alt="Visualization 3" onclick="openLightbox(this)">
+            <p>Household Rooms vs Median House Value</p>
+        </div>
+
+        <div class="image-container">
+            <img src="/static/visualization4.png" alt="Visualization 4" onclick="openLightbox(this)">
+            <p>Heatmap of Correlation Matrix</p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="/analysis">Back to Descriptive Analysis</a>
+    </div>
+
+    <!-- Lightbox for Enlarged Image -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <img id="lightbox-img" src="" alt="Enlarged Image">
+    </div>
+
+    <script>
+        function openLightbox(imgElement) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgElement.src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

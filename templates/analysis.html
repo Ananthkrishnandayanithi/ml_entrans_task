@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descriptive Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #1a1a2e; /* Dark background */
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff00ff; /* Cyber pink */
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33ff;
+        }
+
+        .table-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2a2a40, #3d004f);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ff00ff;
+            color: #fff;
+        }
+
+        th {
+            background-color: #330033; /* Darker pink */
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 0, 255, 0.1);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 0, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .buttons-container a {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(90deg, #ff007f, #ff00ff);
+            border-radius: 8px;
+            box-shadow: 0 0 15px #ff33ff, 0 0 25px #ff66ff;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .buttons-container a:hover {
+            background: linear-gradient(90deg, #ff33ff, #ff007f);
+            transform: scale(1.05);
+        }
+
+        .buttons-container a:first-child {
+            margin-right: auto;
+        }
+
+        .buttons-container a:last-child {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Descriptive Analysis</h1>
+    <div class="table-container">
+        {{ description | safe }}
+    </div>
+    <div class="buttons-container">
+        <a href="/">Back to Prediction</a>
+        <a href="/visualization">Go to Visualizations</a>
+    </div>
+</body>
+</html>

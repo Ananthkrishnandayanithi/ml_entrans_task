@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* Dark cyber background */
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff00ff; /* Cyber pink */
+            margin-top: 30px;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33ff;
+        }
+
+        form {
+            max-width: 700px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, #2a2a40, #3d004f); /* Gradient form background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3), 0 0 40px rgba(255, 0, 255, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ff33ff; /* Neon pink for labels */
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ff33ff; /* Neon pink border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #0f052b; /* Dark field background */
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px #ff33ff;
+        }
+
+        button {
+            background: linear-gradient(90deg, #ff007f, #ff00ff);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 0 15px #ff33ff, 0 0 30px #ff66ff;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #ff33ff, #ff007f);
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff66ff;
+            text-shadow: 0 0 10px #ff33ff;
+        }
+
+        .analysis-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .analysis-link a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(90deg, #ff007f, #ff00ff);
+            border-radius: 8px;
+            box-shadow: 0 0 15px #ff33ff, 0 0 25px #ff66ff;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .analysis-link a:hover {
+            background: linear-gradient(90deg, #ff33ff, #ff007f);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="longitude">Longitude:</label>
+        <input type="number" step="any" name="longitude" id="longitude" required>
+
+        <label for="latitude">Latitude:</label>
+        <input type="number" step="any" name="latitude" id="latitude" required>
+
+        <label for="housing_median_age">Housing Median Age:</label>
+        <input type="number" step="any" name="housing_median_age" id="housing_median_age" required>
+
+        <label for="total_rooms">Total Rooms:</label>
+        <input type="number" step="any" name="total_rooms" id="total_rooms" required>
+
+        <label for="total_bedrooms">Total Bedrooms:</label>
+        <input type="number" step="any" name="total_bedrooms" id="total_bedrooms" required>
+
+        <label for="population">Population:</label>
+        <input type="number" step="any" name="population" id="population" required>
+
+        <label for="households">Households:</label>
+        <input type="number" step="any" name="households" id="households" required>
+
+        <label for="median_income">Median Income:</label>
+        <input type="number" step="any" name="median_income" id="median_income" required>
+
+        <label for="bedroom_ratio">Bedroom Ratio:</label>
+        <input type="number" step="any" name="bedroom_ratio" id="bedroom_ratio" required>
+
+        <label for="household_rooms">Household Rooms:</label>
+        <input type="number" step="any" name="household_rooms" id="household_rooms" required>
+
+        <label for="<1H OCEAN">&lt;1H OCEAN:</label>
+        <input type="number" name="<1H OCEAN" id="<1H OCEAN" value="0" min="0" max="1" required>
+
+        <label for="INLAND">INLAND:</label>
+        <input type="number" name="INLAND" id="INLAND" value="0" min="0" max="1" required>
+
+        <label for="ISLAND">ISLAND:</label>
+        <input type="number" name="ISLAND" id="ISLAND" value="0" min="0" max="1" required>
+
+        <label for="NEAR BAY">NEAR BAY:</label>
+        <input type="number" name="NEAR BAY" id="NEAR BAY" value="0" min="0" max="1" required>
+
+        <label for="NEAR OCEAN">NEAR OCEAN:</label>
+        <input type="number" name="NEAR OCEAN" id="NEAR OCEAN" value="0" min="0" max="1" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        Predicted Median House Value: ${{ prediction }}
+    </div>
+    <div class="analysis-link">
+        <a href="/analysis">Go to Descriptive Analysis</a>
+    </div>
+    {% endif %}
+</body>
+</html>
